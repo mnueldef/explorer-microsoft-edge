@@ -1,0 +1,404 @@
+*{
+    box-sizing: border-box;
+
+}
+body{
+    background-image: radial-gradient(transparent 60%, #000b), url(https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1msBaF?w=0&h=0&q=60&m=6&f=jpg&u=t);
+    background-size: cover;
+   --text-color:#eee;
+   --text-colordark:#444;
+   --search-color:#fff;
+    --dark-color:#222;
+    --dark-color2:#333;
+    --hover-color:#eee1;
+    --link-color:#48e;
+    color: var(--text-color);
+    height: 100dvh;
+    font-family: sans-serif,Arial, Helvetica;
+}
+body, p , label, div, input,h1, h2 ,h3, a,img,span{
+    margin: 0;
+    padding: 0;
+}
+/*---- header start-----*/
+/*-----apps start-----*/
+  .header{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 1.5rem;
+    justify-content: space-between;
+    
+  }
+#appsContainer--checkbox, .appsContainer__apps, .appsContainer--closer {
+    display: none;
+}
+.appsContainer--closer{
+    position: absolute;
+    z-index: 30;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+  
+
+}
+.appsContainer--icon{
+    padding: .5rem;
+    border-radius: 4px;
+    width:2.8rem ;
+    cursor: pointer;
+}
+.app--name{
+    text-decoration: none;
+    color: var(--text-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem 1rem;
+    border-radius: 4px;
+}
+.app--name:hover{
+    background-color:var(--hover-color)
+}
+.appsContainer--icon:hover{
+    background-color: var(--hover-color);
+    
+}
+
+.header__appsContainer:has(#appsContainer--checkbox:checked) .appsContainer__apps, .header__appsContainer:has(#appsContainer--checkbox:checked) .appsContainer--closer{
+    display: grid;
+}
+.appsContainer__apps{
+    background-color: var(--dark-color);
+    border-radius: .5rem;
+    padding: .5rem 1.5rem ;
+    position: absolute;
+    z-index: 40;
+    font-size: .9rem;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    grid-template-areas: "subtittle microsoft_365"
+    "word outlook"
+    "powerpoint to_do"
+    "skype onedrive"
+    "excel one_note"
+    "calendar new  "
+    "all_aplications all_aplications";
+}
+  .app--img{
+    max-width: clamp(10px,24px, 100px);
+  }
+ .apps--a{
+    color:var(--link-color);
+    text-decoration: none;
+ }
+ .apps--a:hover{
+    text-decoration: underline;
+ }
+  #subtittle{
+    grid-area: subtittle;
+  }
+  #microsoft_365{
+    grid-area: microsoft_365;
+    margin-bottom: 1.5em;
+  }
+  #word{
+    grid-area: word;
+
+  }
+  #outlook{
+    grid-area: outlook;
+  }
+  #powerpoint{
+    grid-area: powerpoint;
+  }
+  #to_do{
+    grid-area: to_do;
+  }
+  #skype{
+    grid-area: skype;
+  }
+  #onedrive{
+    grid-area: onedrive;
+  }
+  #excel{
+    grid-area: excel;
+  }
+  #one_note{
+    grid-area: one_note;
+  }
+  #calendar{
+    grid-area: calendar;
+  }
+  #all_aplications{
+    grid-area: all_aplications;
+  }
+  /*----apps end-----*/
+  /*-----settings and climate-----*/
+  .header__settingsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   gap: .8rem;
+  }
+  
+  .climate--climate, .settings--a{
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  
+  .settings--a{
+    display: flex;
+    padding: .4rem .5rem .4rem 1.5rem;
+    border-radius: 1rem;
+ overflow: hidden;
+  }
+  .climate--climate{
+    display: grid;
+    width: min-content;
+    padding:.2rem;
+    grid-template-columns: repeat(3, minmax(40px,1fr));
+   
+  
+  
+  }
+  .climate--span{
+    display: inline-block;
+  }
+  .climate--climate:hover{
+    background-color: var(--hover-color);
+  }
+  .climate--img{
+    max-width:clamp(5px, 2rem, 100%);
+  }
+.header__settingsContainer:has(.settingsContainer__settings:hover) .settingsContainer__climate {
+    display: none;
+  }
+ 
+  .settingsContainer__settings{
+    position: relative;
+
+  }
+  .settings--a:hover{
+    background-color: var(--hover-color);
+  }
+  .settings--a:hover::before{
+     animation: settingsDeploy;
+     animation-duration: .2s;
+  
+     animation-fill-mode: both;
+     animation-timing-function: linear;
+  }
+  .settings--a::before{
+    content: "page settings";
+    position: absolute;
+   right: 0;
+   opacity: 0;
+  }
+  /*-----header ends-----*/
+/*-----search start-----*/
+.principal__container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80dvh;
+ 
+
+}
+.principal{
+  width: 70%;
+  position: relative;
+  padding-top:3rem ;
+}
+.search__container{
+  background-color: var(--search-color);
+  border-radius: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  padding: .3rem .8rem;
+  box-shadow: 0 0 8px #000;
+}
+.principal__search:has(.search--input:focus) .search__container{
+ border-radius: 1.4rem 1.4rem 0 0;
+}
+.principal__search:has(.search--input:focus) .principal__historial{
+  display: flex;
+  flex-direction: column;
+}
+.search--img{
+  width: 2rem;
+ 
+}
+.search__a{
+  width: min-content;
+  display: flex;
+}
+.search--input{
+  border:none;
+  width: 100%;
+  color: var(--text-colordark);
+ 
+}
+.search--input:focus{
+  outline: none;
+}
+.search--input:not(:placeholder-shown) ~ .search__a--copilot{
+  display: none;
+}
+.search--input:not(:placeholder-shown) ~ .search__a--search{
+  display: flex;
+}
+.search__a--search{
+  display: none;
+  border-left:1px solid  var(--text-colordark);
+  padding: 0 .5rem;
+}
+.principal__historial{
+  background-color: var(--search-color);
+  display: none;
+  border-top: 1px solid var(--text-colordark);
+  border-radius: 0 0 1.4rem 1.4rem;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+}
+.principal__starred{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
+  gap: .5rem;
+}
+.starred__container{
+ min-width: 4rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 1rem;
+text-shadow: 0 0 10px  #000;
+position: relative;
+}
+.starred__container span{
+  text-wrap: nowrap;
+  min-width: 4rem;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+}
+.icon__container{
+  min-width: 1.5rem;
+  background-color: var(--dark-color);
+  padding: .8rem;
+  border-radius: 1rem;
+  display: flex;
+  cursor: pointer;
+
+}
+.icon__container img{
+  max-width: 100%;
+}
+.starred__container:hover::before{
+  content: "...";
+  font-size: 1.1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+top:0;
+  right: -25%;
+}
+/*-----msn start-----*/
+  .msnContainer{
+    width: 100%;
+   
+  }
+  .msn{
+    margin: auto;
+     max-width: 90%;
+    background-color: var(--dark-color);
+    
+  }
+  .msn__nav__container{
+    display: flex;
+    justify-content: space-between;
+    padding: .7rem;
+  }
+  .msn__nav, .personalization, .item__a,.msn--logo__a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  
+  }
+  .msn--icon{
+    max-width: 100%;
+  }
+  .item__a,.msn--logo__a{
+    padding: .4rem .8rem;
+    text-decoration: none;
+    color: var(--text-color);
+    
+  }
+  .item__a:hover{
+    opacity: .5;
+  }
+  .personalization{
+    gap: .5rem;
+  }
+  .personalization__a{
+    border: 1px solid var(--text-color);
+    border-radius: 5rem;
+  }
+  /*----- news-----*/
+  .msn__news{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fill,minmax(250px, 300px));
+    gap: .8rem;
+    padding: .8rem;
+  }
+  .container--new{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 20rem;
+    background-color: var(--dark-color2);
+    border-radius: .9rem;
+    transition: transform .3s, outline .3s;
+  }
+  .container--new:hover{
+    transform: scale(1.1);
+    outline: 1px solid var(--link-color);
+  }
+  .new__img{
+    max-width: 100%;
+    border-radius: .9rem .9rem 0 0;
+  }
+  .new--img--container{
+    max-height:80%;
+    overflow: hidden;
+  }
+  .container--new:first-child{
+    grid-column: span 2;
+    max-width: none;
+    width: 100%;
+   
+  }
+  /*-----animations-----*/
+  @keyframes settingsDeploy {
+    
+    
+    40%{
+        opacity: 0;
+        right: 5%;
+    }
+    100%{
+        opacity: 1;
+        position: relative;
+        right: 10%;
+    }
+  }
